@@ -19,10 +19,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nama',
         'email',
         'password',
-        'role'
+        'role',
     ];
 
     /**
@@ -43,7 +43,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     // public function pelanggan()
     // {
     //     return $this->belongsTo(Pelanggan::class);

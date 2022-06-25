@@ -17,19 +17,19 @@ class SepatuSeeder extends Seeder
         $sepatu = [
             [
                 'brand' => 'Converse',
-                'ukuran_id' => '6',
+                'ukuran' => '42',
                 'warna' => 'Hitam-Putih',
                 'harga' => 400000,
             ],
             [
                 'brand' => 'Patrobas',
-                'ukuran_id' => '3',
+                'ukuran' => '40',
                 'warna' => 'Merah',
                 'harga' => 250000,
             ],
             [
                 'brand' => 'Ventela',
-                'ukuran_id' => '6',
+                'ukuran' => '42',
                 'warna' => 'Putih',
                 'harga' => 300000,
             ],

@@ -53,12 +53,7 @@ class LoginController extends Controller
             if (auth()->user()->role == 1) {
                 return redirect()->route('dashboard');
             } else {
-                $data = Sepatu::all();
-
-                return view('user.home', [
-                    'data' => $data,
-                    'title' => "Home User",
-                ]);
+                return redirect()->route('home-user');
             }
         } else {
             return redirect()->route('login')

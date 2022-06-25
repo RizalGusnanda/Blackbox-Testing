@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardUser;
 use App\Http\Controllers\SepatuController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,13 +35,14 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('dashboard-admin');
+// Route::post('/register', [RegisterController::class, 'create']);
 Route::resource('/sepatu', SepatuController::class);
 // Route::resource('/user', DashboardUser::class);
 Route::resource('/pelanggan', PelangganController::class);
 Route::resource('/transaksi', TransaksiController::class);
 
 Route::controller(DashboardUser::class)->group(function () {
-    Route::get('/user/home', 'tampilHome');
+    Route::get('/user/home', 'tampilHome')->name('home-user');
     Route::get('/user/home/{id}', 'detailSepatu');
 });
 
