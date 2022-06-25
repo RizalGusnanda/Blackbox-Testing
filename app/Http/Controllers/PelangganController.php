@@ -29,11 +29,12 @@ class PelangganController extends Controller
     public function index()
     {
         // mengambil data dari tabel sepatu
-        $data = User::all();
+        // $data = User::all();
 
         // menampilkan kembali ke halaman index dengan memberikan variabel bernama data, yang mana isi dari variabel ata adalah data semua sepatu
         return view('pelanggan.index', [
-            'data' => $data,
+            // 'data' => $data,
+            'data' => DB::table('Users')->paginate(5)
         ]);
     }
 

@@ -12,11 +12,12 @@ class SepatuController extends Controller
    public function index()
    {
       // mengambil data dari tabel sepatu
-      $data = Sepatu::all();
+      // $data = Sepatu::all();
 
       // menampilkan kembali ke halaman index dengan memberikan variabel bernama data, yang mana isi dari variabel ata adalah data semua sepatu
       return view('sepatu.index', [
-         'data' => $data,
+         // 'data' => $data,
+         'data' => DB::table('sepatus')->paginate(5)
       ]);
    }
    public function create()

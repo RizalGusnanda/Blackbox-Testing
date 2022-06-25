@@ -122,6 +122,12 @@
                 @endforeach
               </tbody>
             </table>
+            <div class="halaman">
+              Halaman : {{ $data->currentPage() }}
+            </div>
+            <div class="paginate justify-content-right">
+              {{ $data->links() }}
+            </div>
           </div>
         </div>
       </div>
