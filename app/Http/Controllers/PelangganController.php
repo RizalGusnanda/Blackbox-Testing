@@ -134,7 +134,7 @@ class PelangganController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'role' => $request->role,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ]);
 
         // proses update
