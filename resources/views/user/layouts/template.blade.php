@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    @include('user/layouts/navbar');
+    @include('user/layouts/navbar')
 
     <div class="container">
-        @yield('content');
+        @yield('content')
     </div>
 
     @include('user/layouts/footer')

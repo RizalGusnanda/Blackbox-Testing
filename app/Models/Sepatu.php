@@ -16,13 +16,16 @@ class Sepatu extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        // 'id_sepatu',
-        'brand',
-        'harga',
-        'warna',
-        'ukuran',
-        'gambar',
+    // protected $fillable = [
+    //     // 'id_sepatu',
+    //     'brand',
+    //     'harga',
+    //     'warna',
+    //     'ukuran',
+    //     'gambar',
+    // ];
+    protected $guarded = [
+        'id_sepatu',
     ];
     // public function ukuran()
     // {

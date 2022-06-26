@@ -20,18 +20,21 @@ class SepatuSeeder extends Seeder
                 'ukuran' => '42',
                 'warna' => 'Hitam-Putih',
                 'harga' => 400000,
+                'gambar' => ' ',
             ],
             [
                 'brand' => 'Patrobas',
                 'ukuran' => '40',
                 'warna' => 'Merah',
                 'harga' => 250000,
+                'gambar' => ' ',
             ],
             [
                 'brand' => 'Ventela',
                 'ukuran' => '42',
                 'warna' => 'Putih',
                 'harga' => 300000,
+                'gambar' => ' ',
             ],
         ];
         DB::table('sepatus')->insert($sepatu);

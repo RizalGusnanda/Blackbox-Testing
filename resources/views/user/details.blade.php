@@ -5,14 +5,13 @@
     <div class="container-fliud">
         <div class="wrapper row">
             <div class="preview col-md-6">
-                <img width=100% src="#" />
-                <!-- image by: https://www.adidas.com/us/ -->
+                <img width=100% src="/gambar/{{ $data->gambar }}">
             </div>
 
             <div class="details col-md-6 p-4">
                 <h1 class=" product-title">Adidas Type {{ $data->brand }}</h1>
                 <p class="product-description">Warna: {{ $data->warna }} </p>
-                <p class="product-description">{{ $data->ukuran }} </p>
+                <p class="product-description">Ukuran : {{ $data->ukuran }} </p>
                 <h4 class="price">Harga: <span>{{ $data->harga }}</span></h4>
 
 

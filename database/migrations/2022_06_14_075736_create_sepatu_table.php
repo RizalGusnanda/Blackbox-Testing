@@ -19,7 +19,7 @@ class CreateSepatuTable extends Migration
             $table->bigInteger('ukuran');
             $table->string('warna');
             $table->integer('harga');
-            $table->text('gambar')->default(0);
+            $table->string('gambar');
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@
                     </ul>
                 </div>
                 @endif
-                <form method="post" action="/sepatu" id="myForm">
+                <form method="post" action="/sepatu" id="myForm" enctype="multipart/form-data">
                     @csrf
                     <!-- <div class="form-group">
                         <label for="Id">Id</label>
@@ -28,21 +28,26 @@
                     </div> -->
                     <div class="form-group">
                         <label for="brand">Brand</label>
-                        <input type="brand" name="brand" class="form-control" id="brand" aria-describedby="brand">
+                        <input type="text" name="brand" class="form-control" id="brand" aria-describedby="brand">
                     </div>
                     <div class="form-group">
                         <label for="warna">Warna</label>
-                        <input type="warna" name="warna" class="form-control" id="warna" aria-describedby="warna">
+                        <input type="text" name="warna" class="form-control" id="warna" aria-describedby="warna">
                     </div>
                     <div class="form-group">
                         <label for="ukuran">Ukuran</label>
-                        <input type="ukuran" name="ukuran" class="form-control" id="ukuran" aria-describedby="ukuran">
+                        <input type="number" name="ukuran" class="form-control" id="ukuran" aria-describedby="ukuran">
                     </div>
 
                     <div class="form-group">
                         <label for="Harga">Harga</label>
-                        <input type="Harga" name="harga" class="form-control" id="Harga" aria-describedby="Harga">
+                        <input type="text" name="harga" class="form-control" id="harga" aria-describedby="Harga">
                     </div>
+                    <div>
+                        <label for="gambar">Gambar: </label>
+                        <input type="file" name="gambar" class="form-control" id="gambar" required="required"></br>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>

@@ -6,6 +6,7 @@ use App\Models\Sepatu;
 use App\Models\Ukuran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class SepatuController extends Controller
 {
@@ -28,33 +29,29 @@ class SepatuController extends Controller
    }
    public function store(Request $request)
    {
-      $sepatu = new Sepatu; //inisialisasi bentuk object variabel sepatu
+      if ($request->file('gambar')) {
+         $imageName = time() . '.' . $request->gambar->extension();
+         $gambar = $imageName;
+         $request->gambar->move(public_path('gambar'), $imageName);
+      }
 
-      // -- masukkan isi variabel
-      $sepatu->id_sepatu = $request->get('id_sepatu');
-      $sepatu->brand = $request->get('brand');
-      $sepatu->warna = $request->get('warna');
-      $sepatu->ukuran = $request->get('ukuran');
-      $sepatu->harga = $request->get('harga');
-      // --
-
-      // proses simpan
-      $sepatu->save();
-
-
-      // $result = [
-      //    'success' => true,
-      //    'msg' => 'Sepatu ' . $request->brand . ' ditambahkan'
-      // ];
-
-      return view('sepatu.index', [
-         'data' => Sepatu::all(),
+      Sepatu::create([
+         'brand' => $request->brand,
+         'warna' => $request->warna,
+         'ukuran' => $request->ukuran,
+         'harga' => $request->harga,
+         'gambar' => $gambar,
       ]);
+
+      return redirect()->route('sepatu.index')
+         ->with('success', 'sepatu berhasil ditambahkan');
    }
+
    public function show($id)
    {
       //menampilkan detail data dengan menemukan/berdasarkan id Sepatu
-      $sepatu = Sepatu::with('ukuran')->where('id', $id)->first();
+      $sepatu = Sepatu::where('id_sepatu', $id)->first();
+      // dd($sepatu);
       return view('sepatu.detail', ['Sepatu' => $sepatu]);
    }
    public function edit($id)
@@ -67,8 +64,15 @@ class SepatuController extends Controller
          'sepatu' => $sepatu,
       ]);
    }
-   public function update(Request $request)
+   public function update(Request $request, $id)
    {
+
+      $sepatu = Sepatu::where('id_sepatu', $id)->first();
+      if ($request->file('gambar')) {
+         $imageName = time() . '.' . $request->gambar->extension();
+         $gambar = $imageName;
+         $request->gambar->move(public_path('gambar'), $imageName);
+      }
 
       // penyimpanan data sementara di array dengan nama newUpdateData
       $newUpdateData = ([
@@ -77,6 +81,9 @@ class SepatuController extends Controller
          'harga' => $request->harga,
          'warna' => $request->warna,
          'ukuran' => $request->ukuran,
+         'gambar' => $gambar,
+
+
       ]);
 
       // proses update

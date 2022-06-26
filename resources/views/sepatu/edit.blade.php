@@ -20,7 +20,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ukuran">Ukuran</label>
-                        <input type="text" name="ukuran" class="form-control" id="ukuran" value="{{ $sepatu->ukuran }}">
+                        <input type="number" name="ukuran" class="form-control" id="ukuran" value="{{ $sepatu->ukuran }}">
                     </div>
                     <div class="form-group">
                         <label for="warna">Warna</label>
@@ -28,7 +28,14 @@
                     </div>
                     <div class="form-group">
                         <label for="harga">Harga</label>
-                        <input type="harga" name="harga" class="form-control" id="harga" value="{{ $sepatu->harga }}">
+                        <input type="text" name="harga" class="form-control" id="harga" value="{{ $sepatu->harga }}">
+                    </div>
+                    <div>
+                        <label for="gambar">Gambar: </label><br>
+                        <center>
+                            <img width="250px" src="/gambar/{{ $sepatu->gambar }}" class="mb-3"><br>
+                        </center>
+                        <input type="file" name="gambar" class="form-control" id="gambar" required="required" value="{{ $sepatu->gambar }}"></br>
                     </div>
                     <input type="submit" class="btn btn-primary" value="Edit"></input>
                 </form>

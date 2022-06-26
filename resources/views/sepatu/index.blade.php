@@ -113,9 +113,14 @@
                   <td>{{ $dt->ukuran }}</td>
                   <td>{{ $dt->warna }}</td>
                   <td>{{ $dt->harga }}</td>
-                  <td>{{ $dt->gambar }}</td>
+                  <td>
+                    <center>
+                      <img width="150px" src="/gambar/{{ $dt->gambar }}">
+                    </center>
+                  </td>
                   <td class="d-flex justify-content-evenly">
-                    <a href="sepatu/{{ $dt->id_sepatu }}/edit" class="btn btn-primary btn-sm mr-2">Edit</a>
+                    <a href="sepatu/{{ $dt->id_sepatu }}" class="btn btn-primary btn-sm mr-2">Show</a>
+                    <a href="sepatu/{{ $dt->id_sepatu }}/edit" class="btn btn-warning btn-sm mr-2">Edit</a>
                     <form action="sepatu/{{ $dt->id_sepatu }}" method="POST">
                       @method('delete')
                       @csrf
@@ -127,12 +132,9 @@
                 @endforeach
               </tbody>
             </table>
-            <div class="halaman">
-              Halaman : {{ $data->currentPage() }}
-            </div>
-            <div class="paginate justify-content-right">
-              {{ $data->links() }}
-            </div>
+            <br />
+            Halaman : {{ $data->currentPage() }} <br />
+            {{ $data->links() }}
           </div>
         </div>
       </div>

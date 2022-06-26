@@ -9,6 +9,7 @@ use App\Http\Controllers\SepatuController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\auth\RegisterController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,9 @@ Route::controller(DashboardUser::class)->group(function () {
     Route::get('/user/home', 'tampilHome')->name('home-user');
     Route::get('/user/home/{id}', 'detailSepatu');
 });
-
+Route::get('/gambar', function () {
+    Artisan::call("storage:link");
+});
 // Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('role');
 // Route::resource('sepatu', SepatuController::class);
 // Route::get('admin/product', [SepatuController::class, 'halamanProduct'])->name('product.index');
