@@ -46,8 +46,8 @@ Route::resource('pemesanan', PemesananController::class);
 
 
 Route::controller(DashboardUser::class)->group(function () {
-    Route::get('/user/home', 'tampilHome')->name('home-user');
-    Route::get('/user/home/{id}', 'detailSepatu');
+    Route::get('home', 'tampilHome')->name('home-user');
+    Route::get('home/{id}', 'detailSepatu');
     Route::post('add-to-cart/{id}', [SepatuController::class, 'pesan']);
     Route::get('cart', [SepatuController::class, 'cart']);
     Route::delete('cart/{id}', [SepatuController::class, 'delete']);
