@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
@@ -76,6 +78,8 @@ class PelangganController extends Controller
         $pelanggan->email = $request->get('email');
         $pelanggan->role = $request->get('role');
         $pelanggan->password = $request->get('password');
+        $pelanggan->password = Hash::make($pelanggan->password);
+
         // $pelanggan->harga = $request->get('harga');
         // --
 
@@ -130,7 +134,7 @@ class PelangganController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'role' => $request->role,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ]);
 
         // proses update

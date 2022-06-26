@@ -8,7 +8,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNavAltMarkup">
+<<<<<<< HEAD
             <div class="navbar-nav">
+=======
+            <div class="navbar-nav ">
+>>>>>>> 562fa3875b059fc092787d9e186596dc3a2a1d99
                 <a class="nav-item nav-link active" href="/user/home">Produk</span></a>
                 <!-- <a class="nav-item nav-link" href="/logout">Logout</a> -->
                 <a class="nav-item nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
