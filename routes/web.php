@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUser;
 use App\Http\Controllers\SepatuController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\auth\RegisterController;
 use Illuminate\Support\Facades\Artisan;
@@ -40,11 +41,16 @@ Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('das
 Route::resource('/sepatu', SepatuController::class);
 // Route::resource('/user', DashboardUser::class);
 Route::resource('/pelanggan', PelangganController::class);
-Route::resource('/transaksi', TransaksiController::class);
+Route::resource('transaksi', TransaksiController::class);
+Route::resource('pemesanan', PemesananController::class);
+
 
 Route::controller(DashboardUser::class)->group(function () {
     Route::get('/user/home', 'tampilHome')->name('home-user');
     Route::get('/user/home/{id}', 'detailSepatu');
+    Route::post('add-to-cart/{id}', [SepatuController::class, 'pesan']);
+    Route::get('cart', [SepatuController::class, 'cart']);
+    Route::delete('cart/{id}', [SepatuController::class, 'delete']);
 });
 Route::get('/gambar', function () {
     Artisan::call("storage:link");

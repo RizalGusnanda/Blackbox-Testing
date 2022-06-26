@@ -6,13 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Transaksi;
 
-class TransaksiController extends Controller
+class PemesananController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         // return view('transaksi.index');
@@ -30,8 +25,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $transaksi = Transaksi::all();
-        return view('transaksi.create', ['transaksi' => $transaksi]);
+        $pemesanan = Transaksi::all();
+        return view('transaksi.create', ['pemesanan' => $pemesanan]);
     }
 
     /**

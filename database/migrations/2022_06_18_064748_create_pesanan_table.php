@@ -14,13 +14,17 @@ class CreatePesananTable extends Migration
     public function up()
     {
         Schema::create('pesanan', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('sepatu_id');
-            $table->bigInteger('pelanggan_id');
+            $table->bigIncrements('id_pesanan');
+            $table->bigInteger('sepatu_id')->unsigned()->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
             $table->date('tanggal');
             $table->integer('jumlah');
             $table->double('total_harga');
             $table->timestamps();
+
+
+            $table->foreign('sepatu_id')->references('id_sepatu')->on('sepatus');
+            $table->foreign('user_id')->references('id_users')->on('users');
         });
     }
 

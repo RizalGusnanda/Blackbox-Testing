@@ -14,14 +14,15 @@
                 <p class="product-description">Ukuran : {{ $data->ukuran }} </p>
                 <h4 class="price">Harga: <span>{{ $data->harga }}</span></h4>
 
+                <form method="post" action="{{ url('add-to-cart') }}/{{ $data->id_sepatu }}">
+                    @csrf
+                    <input type="text" name="jumlah_pesan" class="form-control" required="" style="border-radius: 50px;">
 
-                <div class="addToCart">
-                    <button href="#" style="margin-top:40px;" class="btn btn-primary" role="button" aria-disabled="true" @if($data->stock == 0)
-                        disabled
-                        @endif>
-                        Tambah Ke Keranjang
-                    </button>
-                </div>
+
+                    <br>
+                    <a><button type="submit" class="cart-btn" style="display: inline-block;background-color: #F28123;color: #fff;padding: 10px 20px;border-radius: 50px;border-width: 0px;"><i class="fas fa-shopping-cart ">
+                            </i> Add to Cart</button></a>
+                </form>
             </div>
         </div>
     </div>
