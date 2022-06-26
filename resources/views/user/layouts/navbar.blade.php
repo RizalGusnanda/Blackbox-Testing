@@ -8,8 +8,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNavAltMarkup">
+<<<<<<< HEAD
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="/user/home">Produk</span></a>
+=======
+            <div class="navbar-nav ">
+                <a class="nav-item nav-link disabled active" href="/user/home">Produk</span></a>
+>>>>>>> 3255812937e2ecab41abb5e949ae08d281faaeec
                 <!-- <a class="nav-item nav-link" href="/logout">Logout</a> -->
                 <a class="nav-item nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
