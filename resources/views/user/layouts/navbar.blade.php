@@ -8,8 +8,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ">
-                <a class="nav-item nav-link active" href="/user/home">Produk</span></a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="home">Produk</span></a>
+                <a class="nav-item nav-link active" href="cart">Cart</span></a>
                 <!-- <a class="nav-item nav-link" href="/logout">Logout</a> -->
                 <a class="nav-item nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

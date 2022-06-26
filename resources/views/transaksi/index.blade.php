@@ -90,7 +90,7 @@
     <div class="container-fluid">
       <div class="card">
         <div class="card-header">
-          <button class="btn btn-warning" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-plus"></i> Tambah Data</button>
+          <a href="{{route('pemesanan.create')}}" class="btn btn-warning"><i class="fa fa-plus"></i> Tambah Data</a>
         </div>
 
         <div class="card-body">
@@ -98,25 +98,38 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Pesanan</th>
-                  <th>Warna</th>
-                  <th>Ukuran</th>
-                  <th>Harga</th>
+                  <th>Sepatu</th>
+                  <th>Pemesan</th>
+                  <th>Tanggal</th>
+                  <th>Jumlah</th>
+                  <th>TotalHarga</th>
                   <th width="20%" class="text-center">Action</th>
                 </tr>
               </thead>
-              <tbody>
-                <!-- <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="text-center">
-                                        <button class="btn btn-primary btn-sm mr-2" id="editData" data-toggle="modal" data-target="#modalEdit" data-id=""><i class="fa fa-pen"></i> Edit</button>
-                                        <button class="btn btn-danger btn-sm" id="delData" data-id=""><i class="fa fa-trash"></i> Delete</button>
-                                    </td>
-                                </tr> -->
+              @foreach ($data as $dt)
+              <tr>
+                <td>{{ $dt ->sepatus->brand }}</td>
+                <td>{{ $dt ->users->nama }}</td>
+                <td>{{ $dt->tanggal }}</td>
+                <td>{{ $dt->jumlah }}</td>
+                <td>{{ $dt->totalHarga }}</td>
+                <!-- <td>
+                    <center>
+                      <img width="150px" src="/gambar/{{ $dt->gambar }}">
+                    </center>
+                  </td> -->
+                <td class="d-flex justify-content-evenly">
+                  <a href="transaksi/{{ $dt->id_transaksi }}" class="btn btn-primary btn-sm mr-2">Show</a>
+                  <a href="transaksi/{{ $dt->id_transaksi }}/edit" class="btn btn-warning btn-sm mr-2">Edit</a>
+                  <form action="transaksi/{{ $dt->id_transaksi }}" method="POST">
+                    @method('delete')
+                    @csrf
+                    <button class="btn btn-danger btn-sm" onclick="return confirm('beneran mau hapus?')">Hapus</button>
+                  </form>
+                </td>
 
+              </tr>
+              @endforeach
               </tbody>
             </table>
           </div>
@@ -137,13 +150,27 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label>Nama Komponen</label>
-          <input type="text" id="nm_komponen" class="form-control" placeholder="ex : Pengungkit" required>
+          <label>Brand</label>
+          <input type="text" id="brand" name="brand" class="form-control" placeholder="ex : Adidas" required>
         </div>
         <div class="form-group">
-          <label>Display num</label>
-          <input type="number" id="display_num" value="" class="form-control" placeholder="ex : 1" readonly>
+          <label>Warna</label>
+          <input type="text" id="warna" name="warna" value="" class="form-control" placeholder="ex : Black">
         </div>
+        <!-- </div> -->
+        <!-- <div class="modal-body"> -->
+
+        <div class="form-group">
+          <label>Harga</label>
+          <input type="text" id="harga" name="harga" value="" class="form-control" placeholder="ex : 312.000">
+        </div>
+        <!-- </div> -->
+        <!-- <div class="modal-body"> -->
+        <!-- <div class="form-group">
+                    <label>Gambar</label>
+                    <input type="file" id="gambar" class="form-control" placeholder="" required style="padding:3px;">
+                </div> -->
+
       </div>
       <div class="modal-footer">
         <button id="addData" class="btn btn-warning"><i class="fa fa-paper-plane mr-1"></i>Tambah</button>

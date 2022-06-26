@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sepatu;
+use App\Models\checkout;
 use App\Models\Ukuran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class SepatuController extends Controller
 {
@@ -100,5 +102,96 @@ class SepatuController extends Controller
       Sepatu::where('id_sepatu', $id)->delete();
       return redirect()->route('sepatu.index')
          ->with('success', 'Sepatu Berhasil Dihapus');
+   }
+   public function pesan(Request $request, $id)
+   {
+      $barangs = Sepatu::where('id_sepatu', $id)->first();
+      $tanggal = Carbon::now();
+
+
+      // if ($request->jumlah_pesan > $barangs->stok) {
+      //    return redirect('/sepatu' . $id);
+      // }
+
+
+      //$cek_pesanan = Pesanan::where('user_id', Auth::user()->id)->where('status_cart', 3)->first();
+
+      // if (empty($cek_pesanan)) {
+      //    $pesanans = new Pesanan;
+      //    $pesanans->user_id = Auth::user()->id;
+      //    $pesanans->tanggal = $tanggal;
+      //    $pesanans->status_cart = 3;
+      //    $pesanans->jumlah_harga = 0;
+      //    $pesanans->kode = mt_rand(100, 999);
+      //    $pesanans->save();
+      // }
+
+      // $pesanan_baru = Pesanan::where('user_id', Auth::user()->id)->where('status_cart', 3)->first();
+
+      $cek_pesanan_detail = checkout::where('barang_id', $barangs->id)->first();
+      //->where('pesanan_id', $pesanan_baru->id_pesanans)->first();
+      if (empty($cek_pesanan_detail)) {
+         $cart = new checkout;
+         $cart->barang_id = $barangs->id_sepatu;
+         //$cart->pesanan_id = $pesanan_baru->id_pesanans;
+         $cart->jumlah = $request->jumlah_pesan;
+         $cart->jumlah_harga = $barangs->harga * $request->jumlah_pesan;
+         //$cart->user_id = Auth::user()->id;
+         $cart->save();
+      } else {
+         $cart = checkout::where('barang_id', $barangs->id)->first();
+         //->where('pesanan_id', $pesanan_baru->id_pesanans)->first();
+         $cart->jumlah = $cart->jumlah + $request->jumlah_pesan;
+
+         $harga_pesanan_detail_baru = $barangs->harga * $request->jumlah_pesan;
+         $cart->jumlah_harga = $cart->jumlah_harga + $harga_pesanan_detail_baru;
+         $cart->update();
+         //Alert::success('Pesanan Sukses Masuk Keranjang', 'Success');
+      }
+
+      //$pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status_cart', 3)->first();
+      //$pesanans->jumlah_harga = $pesanans->jumlah_harga + $barangs->harga * $request->jumlah_pesan;
+      //$pesanans->update();
+
+      return redirect('cart');
+   }
+
+   public function cart()
+   {
+      //$pesanans = Pesanan::where('user_id', Auth::user()->id)->where('status_cart', 3)->first();
+
+      $cart = [];
+      $cart = checkout::get();
+      //$cart = checkout::all()->first();
+      //dd($cart);
+      //if (!empty($cart)) {
+
+      //} else {
+      //Alert::warning('Gagal', 'Masukkan Barang Dulu');
+      // return back()->with('error', 'Keranjang Kosong');
+      //}
+
+
+      // if (!empty($pesanans)) {
+      //    $cart = Cart::where('pesanan_id', $pesanans->id_pesanans)->get();
+      // } else {
+      //    Alert::warning('Gagal', 'Masukkan Barang Dulu');
+      //    return back()->with('error', 'Keranjang Kosong');
+      // }
+      return view('user.checkout', compact('cart'));
+   }
+
+   public function delete($id)
+   {
+
+      $cart = checkout::all()->where('id_checkout', $id)->first();
+      //dd($cart->id_checkout);
+
+      //  $pesanans = Pesanan::where('id_pesanans', $cart->pesanan_id)->first();
+      //  $pesanans->jumlah_harga = $pesanans->jumlah_harga-$cart->jumlah_harga;
+      //  $pesanans->update();
+      $cart->delete($cart);
+
+      return redirect('cart');
    }
 };
