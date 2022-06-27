@@ -17,6 +17,7 @@
                 </ul>
             </div>
             <a class="btn btn-success mt-3" href="{{ route('sepatu.index') }}">Kembali</a>
+            <!-- -->
         </div>
     </div>
 </div>

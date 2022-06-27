@@ -91,6 +91,7 @@
       <div class="card">
         <div class="card-header">
           <a href="/sepatu/create" class="btn btn-warning"><i class="fa fa-plus"></i> Tambah Data</a>
+          <a href="{{ route('cetak_pdf') }}" class="btn btn-info"><i class="fa fa-print"></i> Cetak Data</a>
         </div>
 
         <div class="card-body">

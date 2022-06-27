@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use PDF;
 
 class SepatuController extends Controller
 {
@@ -193,5 +194,11 @@ class SepatuController extends Controller
       $cart->delete($cart);
 
       return redirect('cart');
+   }
+
+   public function cetak_pdf(){
+      $sepatu = Sepatu::all();
+      $pdf = PDF::loadview('sepatu.cetak_pdf',['sepatu'=>$sepatu]);
+      return $pdf->stream();
    }
 };

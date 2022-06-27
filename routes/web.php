@@ -38,7 +38,14 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard/admin', [DashboardController::class, 'index'])->name('dashboard-admin');
 // Route::post('/register', [RegisterController::class, 'create']);
+
 Route::resource('/sepatu', SepatuController::class);
+Route::get('/cetak_pdf', [SepatuController::class, 'cetak_pdf'])->name('cetak_pdf');
+// Route::get('/sepatu/pdf', SepatuController::class, 'cetak_pdf')->name('cetak_pdf');
+//route dompdf product
+// Route::get('/sepatu/pdf', SepatuController::class)->name('cetak_pdf');
+// Route::get('pdf/{id_sepatu}/cetak', [SepatuController::class, 'cetak_pdf'])->name('cetak_pdf');
+
 // Route::resource('/user', DashboardUser::class);
 Route::resource('/pelanggan', PelangganController::class);
 Route::resource('transaksi', TransaksiController::class);
@@ -55,6 +62,9 @@ Route::controller(DashboardUser::class)->group(function () {
 Route::get('/gambar', function () {
     Artisan::call("storage:link");
 });
+
+
+
 // Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('role');
 // Route::resource('sepatu', SepatuController::class);
 // Route::get('admin/product', [SepatuController::class, 'halamanProduct'])->name('product.index');
