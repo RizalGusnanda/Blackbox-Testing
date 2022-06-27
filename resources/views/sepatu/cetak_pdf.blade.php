@@ -15,6 +15,7 @@
                 <th style="border-style: solid;">Brand</th>
                 <th style="border-style: solid;">Ukuran</th>
                 <th style="border-style: solid;">Harga</th>
+                <th style="border-style: solid;">Gambar</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,11 @@
                 </td>
                 <td style="border-style: solid;">
                     {{$spt->harga}}
+                </td>
+                <td style="border-style: solid;">
+                    <center>
+                        <img width="50%" src="gambar/{{ $spt->gambar }}" alt="">
+                    </center>
                 </td>
             </tr>
             @endforeach
