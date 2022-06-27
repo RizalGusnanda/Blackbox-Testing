@@ -100,8 +100,8 @@
               <thead>
                 <tr>
                   <th>Brand</th>
-                  <th>Warna</th>
                   <th>Ukuran</th>
+                  <th>Warna</th>
                   <th>Harga</th>
                   <th>Gambar</th>
                   <th width="20%" class="text-center">Action</th>

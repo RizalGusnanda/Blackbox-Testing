@@ -14,6 +14,7 @@
             <tr>
                 <th style="border-style: solid;">Brand</th>
                 <th style="border-style: solid;">Ukuran</th>
+                <th style="border-style: solid;">Warna</th>
                 <th style="border-style: solid;">Harga</th>
                 <th style="border-style: solid;">Gambar</th>
             </tr>
@@ -26,6 +27,9 @@
                 </td>
                 <td style="border-style: solid;">
                     {{$spt->ukuran}}
+                </td>
+                <td style="border-style: solid;">
+                    {{$spt->warna}}
                 </td>
                 <td style="border-style: solid;">
                     {{$spt->harga}}
