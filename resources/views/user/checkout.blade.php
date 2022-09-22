@@ -27,7 +27,7 @@
                                     <img src="{{asset('gambar/'.$isiKeranjang->Sepatu->gambar)}}" width="100" height="65" alt="...">
                                 </td>
                                 <td>{{ $isiKeranjang->Sepatu->brand }}</td>
-                                <td>Rp {{ number_format($isiKeranjang->Sepatu->ukuran ) }}</td>
+                                <td> {{ number_format($isiKeranjang->Sepatu->ukuran ) }}</td>
                                 <td>{{ $isiKeranjang->jumlah }}</td>
                                 <td>Rp {{ number_format($isiKeranjang->Sepatu->harga ) }}</td>
                                 <td>Rp. {{ number_format($isiKeranjang->jumlah_harga) }}</td>

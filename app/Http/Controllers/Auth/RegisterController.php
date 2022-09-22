@@ -75,6 +75,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        return route('home');
+        return route('home-user');
     }
 }

@@ -9,7 +9,6 @@ use App\Models\Ukuran;
 
 class Sepatu extends Model
 {
-    // protected $table = 'sepatu';
     protected $primaryKey = 'id_sepatu';
     protected $table = 'sepatus';
     /**
@@ -29,8 +28,4 @@ class Sepatu extends Model
     {
         return $this->hasMany(checkout::class, 'barang_id', 'id_sepatu');
     }
-    // public function ukuran()
-    // {
-    //     return $this->belongsTo(Ukuran::class);
-    // }
 }
